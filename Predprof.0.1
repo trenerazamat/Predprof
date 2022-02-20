@@ -1,0 +1,42 @@
+import math
+
+No = 100
+otk = [30, 20, 12, 9, 7, 6, 4, 4, 4, 4]
+sboi = [12, 24, 36, 48, 60, 72, 84, 96, 108, 120]
+m = []
+l = f = p = po = chot = pob = []
+n = nt = s = 0
+i = 0
+t = tsr = lm = lsr = 0
+for i in range(0, 10):
+    n = n + otk[i]
+    nt = No - n
+    p.append(nt / No)
+    f.append(1 - p[i])
+    chot.append(otk[i] / (No * 12))
+    l.append(otk[i] / ((No - s) * 12))
+    t = otk[i] * ((i) * 12 + (i + 1) * 12) * 0.5 + t
+    s = s + otk[i]
+tsr = t / n
+print('-------------------------------------------------')
+print('| T | Nот | F(t) | P(t) |f(t) | L(t) |')
+print('-------------------------------------------------')
+for i in range(0, 10):
+    print('| ', sboi[i], ' | ', otk[i], ' |', f[i], ' | ')
+    print(p[i], ' | ', chot[i], ' |', l[i], ' | ')
+    print('-------------------------------------------------')
+print('СР. ВРЕМЯ НАРАБОТКИ НА ОТКАЗ:', tsr)
+print('Таблица значений Po')
+for i in range(0, 10):
+    po.append(math.exp(-((i + 1) * 12) / tsr))
+for i in range(0, 10):
+    print('Po[', i, ']=', po[i])
+lm = 0
+for i in range(2, 6):
+    lm = lm + l[i]
+lsr = lm / 4
+print('')
+print('Таблица значений Роb')
+for i in range(0, 10):
+    pob.append(math.exp(-(lsr * sboi[i])))
+    print('Pob[', i, ']=', pob[i])
